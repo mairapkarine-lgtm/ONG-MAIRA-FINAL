@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONG DA MÁIRA</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="javascript.js" defer></script>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body class="pagina-inicial">
+    <header>
+        <img
+            src="midia/logodaongmaira.png"
+            width="150"
+            height="150"
+            alt="Imagem representativa da ONG MÁIRA"
+        >
+        <div>
+            <h1>ONG MÁIRA</h1>
+            <h2><em>Organização Não Governamental de Máiras</em></h2>
+        </div>
+    </header>
+
+    <nav class="navegacao" aria-label="Navegação principal">
+        <button
+            class="menu-toggle"
+            id="menu-toggle"
+            type="button"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="menu-principal"
+        >
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M3 6h18M3 12h18M3 18h18"></path>
+            </svg>
+        </button>
+        <ul class="menu-principal" id="menu-principal">
+            <li><a href="#sobre">Sobre</a></li>
+            <li class="item-dropdown">
+                <a href="#projetos" aria-haspopup="true">Projetos</a>
+                <ul class="submenu">
+                    <li><a href="#projetos">Projetos sociais</a></li>
+                    <li><a href="#projetos">Projeto Maira Digital</a></li>
+                </ul>
+            </li>
+            <li class="item-dropdown">
+                <a href="#doaçoes" aria-haspopup="true">Doações</a>
+                <ul class="submenu">
+                    <li><a href="#doaçoes">Doação de roupas</a></li>
+                    <li><a href="#doaçoes">Doação de alimentos</a></li>
+                    <li><a href="#doaçoes">Doação em dinheiro</a></li>
+                </ul>
+            </li>
+            <li><a href="#voluntario">Voluntariado</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+
+    <main id="conteudo-principal" tabindex="-1">
+        <div id="app"></div>
+    </main>
+
+    <footer>
+        <p>ONG MÁIRA - Organização Não Governamental de Máiras</p>
+    </footer>
+</body>
+</html>

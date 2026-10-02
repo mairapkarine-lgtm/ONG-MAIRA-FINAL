@@ -1,0 +1,1374 @@
+/* ==================================================
+   DESIGN SYSTEM
+   ================================================== */
+
+:root {
+
+    /* CORES */
+    --cor-primaria: #262a56;
+    --cor-secundaria: #31499e;
+    --cor-destaque: #f7dc8b;
+    --cor-sucesso: #fffffb;
+    --cor-alerta: #db7d31;
+    --cor-neutra-escura: #1d3051;
+    --cor-neutra-media: #314469;
+    --cor-neutra-clara: #d8e5ff;
+
+    /* TIPOGRAFIA */
+    --fonte-xs: 0.75rem;
+    --fonte-sm: 0.875rem;
+    --fonte-md: 1rem;
+    --fonte-lg: 1.5rem;
+    --fonte-xl: 2rem;
+
+    /* ESPAÇAMENTOS */
+    --espaco-1: 0.25rem;
+    --espaco-2: 0.5rem;
+    --espaco-3: 0.75rem;
+    --espaco-4: 1rem;
+    --espaco-5: 1.5rem;
+    --espaco-6: 2rem;
+    --espaco-7: 3rem;
+    --espaco-8: 4rem;
+}
+
+
+/* ==================================================
+   CONFIGURAÇÕES GERAIS
+   ================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--cor-neutra-clara);
+    color: var(--cor-neutra-escura);
+    font-family: Arial, sans-serif;
+}
+
+p {
+    font-size: var(--fonte-md);
+    line-height: 1.6;
+}
+
+a {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    transition:
+        color 0.3s ease,
+        background-color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+a:hover {
+    color: var(--cor-alerta);
+}
+
+
+/* ==================================================
+   CABEÇALHO - FLEXBOX
+   ================================================== */
+
+header {
+    background-color: var(--cor-alerta);
+    padding: var(--espaco-6) 80px;
+
+    display: flex;
+    align-items: center;
+    gap: var(--espaco-6);
+    flex-wrap: wrap;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+header > img {
+    display: block;
+}
+
+header > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+header h1 {
+    color: var(--cor-primaria);
+    font-size: var(--fonte-xl);
+    margin: 0;
+}
+
+header h2 {
+    color: var(--cor-secundaria);
+    font-size: var(--fonte-md);
+    margin: 0;
+}
+
+header p {
+    margin: 0 0 0 auto;
+    max-width: 400px;
+}
+
+
+/* ==================================================
+   MENU DE NAVEGAÇÃO
+   ================================================== */
+
+.navegacao {
+    background-color: var(--cor-primaria);
+    position: relative;
+}
+
+.menu-principal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--espaco-4);
+
+    list-style: none;
+    margin: 0;
+    padding: var(--espaco-3);
+}
+
+.menu-principal a {
+    display: block;
+    color: white;
+    padding: var(--espaco-2) var(--espaco-3);
+}
+
+.menu-principal a:hover {
+    color: var(--cor-destaque);
+}
+
+
+/* ==================================================
+   DROPDOWN
+   ================================================== */
+
+.item-dropdown {
+    position: relative;
+}
+
+.submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    min-width: 190px;
+    padding: var(--espaco-2);
+    margin: 0;
+
+    list-style: none;
+    background-color: var(--cor-primaria);
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
+
+    z-index: 10;
+}
+
+.item-dropdown:hover > .submenu,
+.item-dropdown:focus-within > .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+/* ==================================================
+   BOTÃO HAMBÚRGUER
+   ================================================== */
+
+.menu-toggle {
+    display: none;
+
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+
+    cursor: pointer;
+    padding: var(--espaco-3);
+}
+
+.menu-toggle:hover {
+    background-color: transparent;
+    transform: none;
+    box-shadow: none;
+}
+
+.menu-toggle:focus {
+    outline: 2px solid var(--cor-destaque);
+    outline-offset: 2px;
+}
+
+.menu-toggle svg {
+    width: 30px;
+    height: 30px;
+
+    fill: none;
+    stroke: white;
+    stroke-width: 2;
+}
+
+
+/* ==================================================
+   ESTADOS INTERATIVOS DOS BOTÕES
+   ================================================== */
+
+button {
+    background-color: var(--cor-primaria);
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    padding: var(--espaco-3) var(--espaco-5);
+
+    font-size: var(--fonte-md);
+    cursor: pointer;
+
+    transition:
+        background-color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--cor-secundaria);
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.2),
+        0 0 10px rgba(247, 220, 139, 0.35);
+}
+
+button:focus {
+    outline: 2px solid var(--cor-destaque);
+    outline-offset: 2px;
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+button:disabled {
+    background-color: var(--cor-neutra-media);
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+
+/* ==================================================
+   COMPONENTES DE FEEDBACK
+   ================================================== */
+
+/* BADGES */
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espaco-2);
+    margin: var(--espaco-4) 0;
+}
+
+.badge {
+    display: inline-block;
+
+    padding: var(--espaco-2) var(--espaco-3);
+
+    border-radius: 20px;
+
+    font-size: var(--fonte-sm);
+    font-weight: bold;
+}
+
+.badge-projeto {
+    background-color: var(--cor-destaque);
+    color: var(--cor-primaria);
+}
+
+.badge-voluntario {
+    background-color: var(--cor-secundaria);
+    color: white;
+}
+
+.badge-doacao {
+    background-color: var(--cor-alerta);
+    color: white;
+}
+
+
+/* ALERTA */
+
+.alerta {
+    margin: var(--espaco-5) 0;
+    padding: var(--espaco-4);
+
+    border-left: 5px solid var(--cor-alerta);
+    border-radius: 8px;
+
+    background-color: #fff3e8;
+    color: var(--cor-neutra-escura);
+}
+
+
+/* TOAST */
+
+.toast {
+    position: fixed;
+    right: var(--espaco-5);
+    bottom: var(--espaco-5);
+
+    background-color: var(--cor-primaria);
+    color: white;
+
+    padding: var(--espaco-3) var(--espaco-5);
+    border-radius: 8px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(20px);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
+
+    z-index: 100;
+}
+
+.toast.mostrar {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+/* ==================================================
+   MODAL
+   ================================================== */
+
+.modal {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    z-index: 200;
+}
+
+.modal.mostrar {
+    display: flex;
+}
+
+.modal-conteudo {
+    position: relative;
+
+    width: 90%;
+    max-width: 500px;
+
+    padding: var(--espaco-6);
+
+    background-color: white;
+    border-radius: 10px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.fechar-modal {
+    position: absolute;
+    top: var(--espaco-3);
+    right: var(--espaco-3);
+
+    background-color: transparent;
+    color: var(--cor-primaria);
+
+    font-size: var(--fonte-lg);
+
+    padding: var(--espaco-1);
+
+    box-shadow: none;
+}
+
+.fechar-modal:hover {
+    background-color: transparent;
+    color: var(--cor-alerta);
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* ==================================================
+   TÍTULOS
+   ================================================== */
+
+h1 {
+    color: var(--cor-primaria);
+}
+
+h2 {
+    color: var(--cor-secundaria);
+    font-size: var(--fonte-lg);
+}
+
+h3 {
+    color: var(--cor-primaria);
+    font-size: var(--fonte-lg);
+
+    margin-top: var(--espaco-4);
+
+    border-bottom: 3px solid var(--cor-destaque);
+    padding-bottom: var(--espaco-2);
+}
+
+h4 {
+    color: var(--cor-secundaria);
+    margin-bottom: var(--espaco-2);
+}
+
+
+/* ==================================================
+   GRID PRINCIPAL - 12 COLUNAS
+   ================================================== */
+
+.pagina-inicial main {
+    width: 90%;
+    max-width: 1100px;
+
+    margin: 0 auto;
+    padding: var(--espaco-7) 0;
+
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--espaco-5);
+}
+
+
+/* Título e texto inicial ocupam as 12 colunas */
+
+.pagina-inicial main > h3,
+.pagina-inicial main > p {
+    grid-column: 1 / -1;
+}
+
+
+/* Seções ocupam 6 das 12 colunas */
+
+.pagina-inicial section {
+    grid-column: span 6;
+}
+
+
+/* Estas seções ocupam todas as 12 colunas */
+
+.pagina-inicial #importancia,
+.pagina-inicial #contato {
+    grid-column: 1 / -1;
+}
+
+
+/* ==================================================
+   SEÇÕES
+   ================================================== */
+
+section {
+    background-color: white;
+
+    padding: var(--espaco-5);
+    margin-top: var(--espaco-5);
+
+    border-radius: 10px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+section:hover {
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ==================================================
+   TÍTULOS DE DESTAQUE
+   ================================================== */
+
+#titulo-um {
+    background-color: var(--cor-alerta);
+    color: var(--cor-primaria);
+
+    padding: var(--espaco-5);
+    border-radius: 8px;
+}
+
+#titulo-dois {
+    color: var(--cor-alerta);
+}
+
+
+/* ==================================================
+   PROJETOS
+   ================================================== */
+
+details {
+    margin-top: var(--espaco-4);
+}
+
+summary {
+    cursor: pointer;
+
+    color: var(--cor-primaria);
+    font-size: var(--fonte-md);
+
+    padding: var(--espaco-3);
+    border-radius: 8px;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
+
+summary:hover {
+    background-color: var(--cor-destaque);
+}
+
+li {
+    margin-bottom: var(--espaco-3);
+    line-height: 1.5;
+}
+
+
+/* ==================================================
+   BOTÕES DE VOLUNTARIADO E DOAÇÕES
+   ================================================== */
+
+#voluntario ul,
+#doacoes ul,
+#doaçoes ul {
+    list-style: none;
+
+    padding: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: var(--espaco-3);
+}
+
+#voluntario a,
+#doacoes a,
+#doaçoes a {
+    display: inline-block;
+
+    background-color: var(--cor-primaria);
+    color: white;
+
+    padding: var(--espaco-2) var(--espaco-4);
+
+    border-radius: 8px;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#voluntario a:hover,
+#doacoes a:hover,
+#doaçoes a:hover {
+    background-color: var(--cor-secundaria);
+    color: white;
+
+    transform: scale(1.05);
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.2),
+        0 0 12px rgba(247, 220, 139, 0.45);
+
+    text-decoration: none;
+}
+
+
+/* ==================================================
+   VÍDEO
+   ================================================== */
+
+iframe {
+    display: block;
+
+    width: 560px;
+    max-width: 100%;
+
+    margin: var(--espaco-4) auto;
+
+    border-radius: 10px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ==================================================
+   ÍCONES SVG
+   ================================================== */
+
+.icone-svg {
+    width: 24px;
+    height: 24px;
+
+    fill: currentColor;
+
+    flex-shrink: 0;
+
+    transition:
+        transform 0.3s ease,
+        color 0.3s ease;
+}
+
+.icone-svg:hover {
+    transform: scale(1.2);
+    color: var(--cor-alerta);
+}
+
+
+/* ==================================================
+   CONTATO - FLEXBOX
+   ================================================== */
+
+#contato {
+    width: 100%;
+}
+
+#contato .contato-item {
+    display: flex;
+    align-items: center;
+
+    gap: var(--espaco-3);
+
+    margin-bottom: var(--espaco-3);
+}
+
+#contato .contato-item svg {
+    width: 24px;
+    height: 24px;
+
+    flex-shrink: 0;
+
+    fill: var(--cor-primaria);
+
+    transition:
+        transform 0.3s ease,
+        fill 0.3s ease;
+}
+
+#contato .contato-item p {
+    margin: 0;
+
+    font-size: var(--fonte-md);
+}
+
+
+/* ==================================================
+   BOTÕES/LINKS DA ÁREA DE CONTATO
+   ================================================== */
+
+#contato .contato-item a {
+    display: inline-block;
+
+    background-color: var(--cor-primaria);
+    color: white;
+
+    padding: var(--espaco-2) var(--espaco-4);
+
+    border-radius: 8px;
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#contato .contato-item a:hover {
+    background-color: var(--cor-secundaria);
+    color: white;
+
+    transform: scale(1.05);
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.2),
+        0 0 12px rgba(247, 220, 139, 0.5);
+}
+
+#contato .contato-item a:hover + * {
+    color: inherit;
+}
+
+
+/* ==================================================
+   PÁGINA DE CADASTRO
+   ================================================== */
+
+.pagina-cadastro main {
+    width: 90%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+    padding: var(--espaco-7) 0;
+}
+
+
+/* ==================================================
+   FORMULÁRIO
+   ================================================== */
+
+form {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: var(--espaco-4);
+}
+
+fieldset {
+    background-color: white;
+
+    padding: var(--espaco-5);
+    margin: 0 0 var(--espaco-5);
+
+    border: 1px solid var(--cor-neutra-media);
+    border-radius: 10px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+legend {
+    color: var(--cor-primaria);
+
+    font-size: var(--fonte-md);
+    font-weight: bold;
+
+    padding: 0 var(--espaco-2);
+}
+
+
+/* ==================================================
+   CAMPOS DO FORMULÁRIO
+   ================================================== */
+
+label {
+    display: block;
+
+    color: var(--cor-primaria);
+
+    margin-bottom: var(--espaco-2);
+}
+
+input:not([type="radio"]):not([type="checkbox"]),
+select,
+textarea {
+    width: 100%;
+
+    padding: var(--espaco-3);
+
+    border: 1px solid var(--cor-neutra-media);
+    border-radius: 6px;
+
+    font-family: Arial, sans-serif;
+    font-size: var(--fonte-md);
+
+    background-color: white;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+/* Espaçamento entre campos */
+
+fieldset > input,
+fieldset > select,
+fieldset > textarea {
+    margin-bottom: var(--espaco-4);
+}
+
+
+/* ==================================================
+   RADIO BUTTONS
+   ================================================== */
+
+input[type="radio"] {
+    width: auto;
+
+    margin-right: var(--espaco-2);
+}
+
+fieldset input[type="radio"] + label {
+    display: inline;
+}
+
+
+/* ==================================================
+   CHECKBOX
+   ================================================== */
+
+input[type="checkbox"] {
+    margin-right: var(--espaco-2);
+}
+
+fieldset input[type="checkbox"] + label {
+    display: inline;
+}
+
+
+/* ==================================================
+   ÁREA DE TEXTO
+   ================================================== */
+
+textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+
+/* ==================================================
+   FOCO DOS CAMPOS
+   ================================================== */
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--cor-secundaria);
+    outline-offset: 1px;
+
+    border-color: var(--cor-secundaria);
+
+    box-shadow:
+        0 0 6px rgba(49, 73, 158, 0.25);
+}
+
+
+/* ==================================================
+   VALIDAÇÃO VISUAL DO FORMULÁRIO
+   ================================================== */
+
+input:not([type="radio"]):not([type="checkbox"]):valid,
+select:valid,
+textarea:valid {
+    border-color: #3a8f5b;
+}
+
+input:not([type="radio"]):not([type="checkbox"]):invalid,
+select:invalid,
+textarea:invalid {
+    border-color: var(--cor-alerta);
+}
+
+
+/* ==================================================
+   BOTÕES DO FORMULÁRIO - FLEXBOX
+   ================================================== */
+
+.form-botoes {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: var(--espaco-3);
+
+    flex-wrap: wrap;
+}
+
+.form-botoes button {
+    margin-top: var(--espaco-4);
+}
+
+
+/* ==================================================
+   FOOTER
+   ================================================== */
+
+footer {
+    background-color: var(--cor-primaria);
+    color: white;
+
+    text-align: center;
+
+    padding: var(--espaco-4);
+}
+
+footer p {
+    margin: 0;
+}
+
+
+/* ==================================================
+   SELEÇÃO DE TEXTO
+   ================================================== */
+
+::selection {
+    background-color: var(--cor-destaque);
+    color: var(--cor-primaria);
+}
+
+
+/* ==================================================
+   BREAKPOINT 1 - TELAS GRANDES
+   ================================================== */
+
+@media (max-width: 1200px) {
+
+    header {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .pagina-inicial main {
+        width: 88%;
+    }
+}
+
+
+/* ==================================================
+   BREAKPOINT 2 - NOTEBOOKS
+   ================================================== */
+
+@media (max-width: 992px) {
+
+    header {
+        padding: var(--espaco-5) 40px;
+    }
+
+    .pagina-inicial main {
+        width: 90%;
+    }
+
+    .pagina-inicial section {
+        grid-column: span 6;
+    }
+}
+
+
+/* ==================================================
+   BREAKPOINT 3 - TABLETS
+   ================================================== */
+
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        text-align: center;
+
+        padding: var(--espaco-5);
+    }
+
+    header > div {
+        align-items: center;
+        text-align: center;
+    }
+
+    header p {
+        margin: 0;
+    }
+
+
+    /* MENU HAMBÚRGUER */
+
+    .menu-toggle {
+        display: block;
+
+        margin-left: auto;
+        margin-right: var(--espaco-3);
+    }
+
+    .menu-principal {
+        display: none;
+
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 0;
+    }
+
+    .menu-principal.menu-aberto {
+        display: flex;
+    }
+
+    .submenu {
+        position: static;
+
+        display: none;
+
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+
+        width: auto;
+    }
+
+    .item-dropdown:hover > .submenu,
+    .item-dropdown:focus-within > .submenu {
+        display: block;
+    }
+
+
+    /* GRID */
+
+    .pagina-inicial section {
+        grid-column: 1 / -1;
+    }
+
+    .pagina-inicial main {
+        width: 90%;
+    }
+
+
+    /* CONTATO */
+
+    .contato-item {
+        align-items: flex-start;
+    }
+}
+
+
+/* ==================================================
+   BREAKPOINT 4 - CELULARES
+   ================================================== */
+
+@media (max-width: 576px) {
+
+    header {
+        padding: var(--espaco-4);
+    }
+
+    header > img {
+        width: 120px;
+        height: 120px;
+    }
+
+    header h1 {
+        font-size: var(--fonte-lg);
+    }
+
+    header h2 {
+        font-size: var(--fonte-sm);
+    }
+
+    .pagina-inicial main,
+    .pagina-cadastro main {
+        width: 92%;
+
+        padding: var(--espaco-5) 0;
+    }
+
+    section {
+        padding: var(--espaco-4);
+    }
+
+
+    /* VOLUNTARIADO E DOAÇÕES */
+
+    #voluntario ul,
+    #doacoes ul,
+    #doaçoes ul {
+        flex-direction: column;
+    }
+
+    #voluntario a,
+    #doacoes a,
+    #doaçoes a {
+        width: 100%;
+        text-align: center;
+    }
+
+
+    /* VÍDEO */
+
+    iframe {
+        width: 100%;
+        height: auto;
+
+        aspect-ratio: 16 / 9;
+    }
+
+
+    /* FORMULÁRIO */
+
+    fieldset {
+        padding: var(--espaco-4);
+    }
+
+
+    /* CONTATO */
+
+    #contato .contato-item {
+        align-items: flex-start;
+    }
+
+    #contato .contato-item a {
+        max-width: 100%;
+    }
+}
+
+
+/* ==================================================
+   BREAKPOINT 5 - CELULARES PEQUENOS
+   ================================================== */
+
+@media (max-width: 400px) {
+
+    header {
+        padding: var(--espaco-3);
+    }
+
+    header > img {
+        width: 100px;
+        height: 100px;
+    }
+
+    h3 {
+        font-size: var(--fonte-md);
+    }
+
+    p {
+        font-size: var(--fonte-sm);
+    }
+
+    .pagina-inicial main,
+    .pagina-cadastro main {
+        width: 94%;
+    }
+
+    section {
+        padding: var(--espaco-3);
+    }
+
+    .form-botoes {
+        flex-direction: column;
+    }
+
+    .form-botoes button {
+        width: 100%;
+    }
+}
+
+/* ==================================================
+   CONTÊINER DA SPA
+   ================================================== */
+
+#app {
+    width: 100%;
+    display: contents;
+}
+
+/* ==================================================
+   MENSAGENS E ESTADOS DO FORMULÁRIO
+   ================================================== */
+
+.campo-valido {
+    border-color: #3a8f5b !important;
+}
+
+.campo-invalido {
+    border-color: var(--cor-alerta) !important;
+}
+
+.mensagem-formulario {
+    margin: 20px 0 0;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.mensagem-sucesso {
+    background: #e8f5e9;
+    color: #246b3a;
+    border: 1px solid #3a8f5b;
+}
+
+.mensagem-erro {
+    background: #ffebee;
+    color: #a32626;
+    border: 1px solid var(--cor-alerta);
+}
+
+.mensagem-info {
+    background: #eef2ff;
+    color: #31499e;
+    border: 1px solid var(--cor-secundaria);
+}
+
+/* ==================================================
+   CORREÇÃO DO GRID DA SPA
+   ==================================================
+   O #app usa display: contents, então os elementos
+   dentro dele passam a ser itens diretos do grid do main.
+   Estas regras mantêm o conteúdo organizado.
+*/
+
+.pagina-inicial #app > #titulo-um,
+.pagina-inicial #app > p {
+    grid-column: 1 / -1;
+}
+
+.pagina-inicial #app > #importancia,
+.pagina-inicial #app > #feedback,
+.pagina-inicial #app > #contato {
+    grid-column: 1 / -1;
+}
+
+.pagina-inicial #app > #sobre,
+.pagina-inicial #app > #projetos,
+.pagina-inicial #app > #voluntario,
+.pagina-inicial #app > #doaçoes {
+    grid-column: span 6;
+}
+
+/* Evita que o título "O QUE É UMA ONG?" fique
+   espremido ou separado do texto explicativo. */
+.pagina-inicial #app > #titulo-um {
+    margin-bottom: 0;
+}
+
+.pagina-inicial #app > #titulo-um + p {
+    margin-top: calc(var(--espaco-2) * -1);
+}
+
+@media (max-width: 768px) {
+
+    .pagina-inicial #app > #sobre,
+    .pagina-inicial #app > #projetos,
+    .pagina-inicial #app > #voluntario,
+    .pagina-inicial #app > #doaçoes {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+/* ==================================================
+   ACESSIBILIDADE - FOCO, MODO ESCURO E ALTO CONTRASTE
+   ================================================== */
+
+:focus-visible {
+    outline: 3px solid var(--cor-destaque);
+    outline-offset: 3px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --cor-primaria: #9eb0ff;
+        --cor-secundaria: #b8c5ff;
+        --cor-destaque: #ffe9a6;
+        --cor-alerta: #ffb26b;
+        --cor-neutra-escura: #f5f7ff;
+        --cor-neutra-media: #cbd3ef;
+        --cor-neutra-clara: #12162a;
+    }
+
+    body {
+        background-color: #12162a;
+        color: #f5f7ff;
+    }
+
+    section,
+    .modal-conteudo,
+    input:not([type="radio"]):not([type="checkbox"]),
+    select,
+    textarea {
+        background-color: #1d2340;
+        color: #f5f7ff;
+    }
+
+    .navegacao,
+    .submenu,
+    footer {
+        background-color: #090c18;
+    }
+
+    .menu-principal a,
+    .menu-principal a:hover {
+        color: #ffffff;
+    }
+
+    label,
+    header h1,
+    header h2,
+    a,
+    #titulo-dois {
+        color: var(--cor-destaque);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+        color: #d9def0;
+    }
+}
+
+@media (prefers-contrast: more) {
+    body {
+        color: #000000;
+        background-color: #ffffff;
+    }
+
+    a,
+    label,
+    header h1,
+    header h2 {
+        text-decoration-thickness: 2px;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    summary:focus-visible {
+        outline: 4px solid #000000;
+        outline-offset: 3px;
+    }
+
+    section,
+    input:not([type="radio"]):not([type="checkbox"]),
+    select,
+    textarea {
+        border: 2px solid #000000;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
